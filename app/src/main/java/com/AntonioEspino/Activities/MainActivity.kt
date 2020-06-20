@@ -1,10 +1,12 @@
-package com.AntonioEspino
+package com.AntonioEspino.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
+import com.AntonioEspino.DataHolder
+import com.AntonioEspino.R
 import com.AntonioEspino.adapters.FilmsAdapter
 import com.AntonioEspino.adapters.FilmsListener
 import com.AntonioEspino.api.ApiRest

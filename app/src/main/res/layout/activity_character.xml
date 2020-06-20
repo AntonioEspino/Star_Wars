@@ -3,7 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CharacterActivity">
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".Activities.CharacterActivity">
+
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/loading"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_characters"

@@ -9,35 +9,44 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="20dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="Nombre" />
+            android:text="Name"
+            android:textSize="15dp"
+            android:paddingVertical="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            />
 
         <TextView
             android:id="@+id/genre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="Sexo" />
+            android:text="Genre"
+            android:paddingVertical="5dp"
+            android:textColor="@color/colorPrimary"
+            />
 
         <TextView
             android:id="@+id/specie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="Especie" />
+            android:text="Specie"
+            android:paddingVertical="5dp"
+            android:textColor="@color/colorPrimary"/>
 
         <TextView
             android:id="@+id/home_world"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="Origen" />
+            android:text="Origin"
+            android:paddingVertical="5dp"
+            android:textColor="@color/colorPrimary"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

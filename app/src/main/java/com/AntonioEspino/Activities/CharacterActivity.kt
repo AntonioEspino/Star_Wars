@@ -1,20 +1,24 @@
-package com.AntonioEspino
+package com.AntonioEspino.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.os.Handler
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.AntonioEspino.DataHolder
+import com.AntonioEspino.R
 import com.AntonioEspino.adapters.CharacterAdapter
-import com.AntonioEspino.adapters.FilmsAdapter
 import com.AntonioEspino.api.ApiRest
 import com.AntonioEspino.models.*
 import kotlinx.android.synthetic.main.activity_character.*
-import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.schedule
 
 class CharacterActivity : AppCompatActivity() {
 
@@ -30,9 +34,13 @@ class CharacterActivity : AppCompatActivity() {
 
         loadAdapter()
 
+        Handler().postDelayed({
+            loading.visibility = View.GONE
+        }, 2000)
     }
 
     private fun getCharacterList() {
+        loading.visibility = View.VISIBLE
         DataHolder.filmSelected?.characters?.forEach { character ->
             val call = ApiRest.service.getCharacterByUrl(character)
 
@@ -47,18 +55,19 @@ class CharacterActivity : AppCompatActivity() {
                     } else {
                         Log.e(TAG, response.errorBody()?.string()!!)
                     }
+
                 }
 
                 override fun onFailure(call: Call<Character>, t: Throwable) {
                     Log.e(TAG, t.message!!)
+
                 }
             })
+
         }
-
-
     }
 
-    fun loadAdapter() {
+    private fun loadAdapter() {
         val mLayoutManager = GridLayoutManager(this, 2)
         recycler_characters.layoutManager = mLayoutManager
         adapter = CharacterAdapter(data)
