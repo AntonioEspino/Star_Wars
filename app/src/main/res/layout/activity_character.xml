@@ -8,14 +8,16 @@
     tools:context=".Activities.CharacterActivity">
 
     <ProgressBar
+        android:id="@+id/loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/loading"/>
+        android:foreground="@drawable/star_war_icon"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_characters"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 
 
 </LinearLayout>

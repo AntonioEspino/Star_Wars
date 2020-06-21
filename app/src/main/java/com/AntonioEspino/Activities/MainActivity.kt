@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.AntonioEspino.DataHolder
 import com.AntonioEspino.R
@@ -41,6 +42,8 @@ class MainActivity : AppCompatActivity(), FilmsListener {
     }
 
     private fun getFilmsList() {
+        loading_icon.visibility = View.VISIBLE
+
         val call = ApiRest.service.getFilmsList()
 
         call.enqueue(object : Callback<FilmsList> {
@@ -49,28 +52,30 @@ class MainActivity : AppCompatActivity(), FilmsListener {
 
                 val body = response.body()
                 if (response.isSuccessful && body != null) {
-                    //Log.e(TAG, body.toString())
 
                     data.clear()
                     data.addAll(body.results)
-
 
                     adapter?.notifyDataSetChanged()
 
                 } else {
                     Log.e(TAG, response.errorBody()?.string()!!)
                 }
+                loading_icon.visibility = View.GONE
+
             }
 
             override fun onFailure(call: Call<FilmsList>, t: Throwable) {
                 Log.e(TAG, t.message!!)
+                loading_icon.visibility = View.GONE
+
             }
         })
     }
 
-    override fun onClick(filmSelected: Film) {
+    override fun onClick(filmSelect: Film) {
         val filmIntent = Intent(this, CharacterActivity::class.java)
-        DataHolder.filmSelected = filmSelected
+        DataHolder.filmSelected = filmSelect
         Log.e(TAG, DataHolder.filmSelected!!.characters.toString())
         startActivity(filmIntent)
     }

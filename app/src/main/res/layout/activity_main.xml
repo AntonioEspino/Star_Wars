@@ -3,9 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/colorPrimaryDark"
     tools:context=".Activities.MainActivity">
-
+    <ProgressBar
+        android:id="@+id/loading_icon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="@drawable/star_war_icon"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_films"
         android:layout_width="match_parent"
